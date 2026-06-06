@@ -4,6 +4,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Create Service for API requests
+ */
+
 @Service
 public class JobApplicationService {
 

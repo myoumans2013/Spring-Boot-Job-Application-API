@@ -5,6 +5,10 @@ import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 
+
+/**
+ * Create main JobApplication entity/object with contrustors/getters/setters
+ */
 @Entity
 public class JobApplication {
 
@@ -87,5 +91,5 @@ public class JobApplication {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-    
+
 }

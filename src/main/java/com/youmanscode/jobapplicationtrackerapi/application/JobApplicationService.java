@@ -12,6 +12,7 @@ import java.util.List;
 public class JobApplicationService {
 
     private final JobApplicationRepository jobApplicationRepository;
+    
 
     public JobApplicationService(JobApplicationRepository jobApplicationRepository) {
         this.jobApplicationRepository = jobApplicationRepository;

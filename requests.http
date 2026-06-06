@@ -1,0 +1,15 @@
+### GET request with parameter
+GET http://localhost:8080/api/applications
+
+### Send POST request with json body
+POST http://localhost:8080/api/applications
+Content-Type: application/json
+
+{
+  "companyName": "AT&T",
+  "jobTitle": "Junior Java Developer",
+  "status": "APPLIED",
+  "dateApplied": "2026-06-06",
+  "jobLink": "https://example.com/job",
+  "notes": "Applied through LinkedIn"
+}

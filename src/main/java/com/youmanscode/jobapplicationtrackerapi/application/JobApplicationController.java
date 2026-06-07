@@ -18,16 +18,22 @@ public class JobApplicationController {
         return jobApplicationService.getAllApplications();
     }
 
-    @PostMapping()
-    public JobApplication createJobApplication(@RequestBody JobApplication jobApplication) {
-        return jobApplicationService.createApplication(jobApplication);
-    }
-
     @GetMapping("{id}")
     public List<JobApplication> getApplicationById(@PathVariable Long id) {
         System.out.println("Job application created!");
         return jobApplicationService.getApplicationByID(id);
     }
+
+    @PostMapping()
+    public JobApplication createJobApplication(@RequestBody JobApplication jobApplication) {
+        return jobApplicationService.createApplication(jobApplication);
+    }
+
+    @PutMapping("{id}")
+    public JobApplication updateJobApplicationById(@PathVariable Long id, @RequestBody JobApplication jobApplication) {
+        return jobApplicationService.updateJobApplicationById(id, jobApplication);
+    }
+
 
     @DeleteMapping
     public String deleteAllApplications() {

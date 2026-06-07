@@ -2,7 +2,7 @@
 GET http://localhost:8080/api/applications
 
 ### GET job application by ID
-GET http://localhost:8080/api/applications/1
+GET http://localhost:8080/api/applications/16
 
 ### Send POST request with json body
 POST http://localhost:8080/api/applications
@@ -17,8 +17,21 @@ Content-Type: application/json
   "notes": "Applied through LinkedIn"
 }
 
+### Update job application by ID
+PUT http://localhost:8080/api/applications/16
+Content-Type: application/json
+
+{
+  "companyName": "Verizon",
+  "jobTitle": "Junior Java Developer",
+  "status": "APPLIED",
+  "dateApplied": "2026-06-06",
+  "jobLink": "https://example.com/jobsss",
+  "notes": "Applied through Myspace"
+}
+
 ### Delete all job applications
 DELETE http://localhost:8080/api/applications
 
-### Delete all job applications
-DELETE http://localhost:8080/api/applications/1
+### Delete job applications by id
+DELETE http://localhost:8080/api/applications/16

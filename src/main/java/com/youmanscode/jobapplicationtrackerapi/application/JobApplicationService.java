@@ -52,4 +52,21 @@ public class JobApplicationService {
             jobApplicationRepository.delete(jobApplication);
         }
     }
+
+    public JobApplication updateJobApplicationById(Long id, JobApplication updatedApplication) {
+        Optional<JobApplication> application = jobApplicationRepository.findById(id);
+        if (application.isEmpty()) {
+            throw new IllegalStateException("Cannot find id");
+        } else {
+            JobApplication existingApplication = application.get();
+            existingApplication.setCompanyName(updatedApplication.getCompanyName());
+            existingApplication.setJobTitle(updatedApplication.getJobTitle());
+            existingApplication.setStatus(updatedApplication.getStatus());
+            existingApplication.setDateApplied(updatedApplication.getDateApplied());
+            existingApplication.setJobLink(updatedApplication.getJobLink());
+            existingApplication.setNotes(updatedApplication.getNotes());
+            jobApplicationRepository.save(existingApplication);
+            return existingApplication;
+        }
+    }
 }

@@ -1,5 +1,8 @@
-### GET request with parameter
+### GET all job applications
 GET http://localhost:8080/api/applications
+
+### GET job application by ID
+GET http://localhost:8080/api/applications/1
 
 ### Send POST request with json body
 POST http://localhost:8080/api/applications
@@ -13,3 +16,9 @@ Content-Type: application/json
   "jobLink": "https://example.com/job",
   "notes": "Applied through LinkedIn"
 }
+
+### Delete all job applications
+DELETE http://localhost:8080/api/applications
+
+### Delete all job applications
+DELETE http://localhost:8080/api/applications/1

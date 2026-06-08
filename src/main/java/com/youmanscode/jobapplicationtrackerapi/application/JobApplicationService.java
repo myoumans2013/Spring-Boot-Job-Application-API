@@ -1,6 +1,9 @@
 package com.youmanscode.jobapplicationtrackerapi.application;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +24,11 @@ public class JobApplicationService {
     }
 
     public List<JobApplication> getAllApplications() {
-        return jobApplicationRepository.findAll();
+        if (jobApplicationRepository.findAll().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return jobApplicationRepository.findAll();
+        }
     }
 
     public JobApplication createApplication(JobApplication jobApplication) {
@@ -29,15 +36,21 @@ public class JobApplicationService {
     }
 
     public void deleteAllApplications() {
-        jobApplicationRepository.deleteAll();
+        if (jobApplicationRepository.findAll().isEmpty()) {
+            System.out.println("There are no job applications to delete.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            jobApplicationRepository.deleteAll();
+            throw new ResponseStatusException(HttpStatus.OK);
+        }
     }
 
     public List<JobApplication> getApplicationByID(Long id) {
-        Optional<JobApplication> getID = jobApplicationRepository.findById(id);
-        if (getID.isEmpty()) {
-            throw new IllegalStateException("Can't find id");
+        Optional<JobApplication> application = jobApplicationRepository.findById(id);
+        if (application.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
-            JobApplication jobApplication = getID.get();
+            JobApplication jobApplication = application.get();
             return Collections.singletonList(jobApplication);
 
         }
@@ -46,7 +59,7 @@ public class JobApplicationService {
     public void deleteApplicationById(Long id) {
         Optional<JobApplication> application = jobApplicationRepository.findById(id);
         if (application.isEmpty()) {
-            throw new IllegalStateException("Cannot find id");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
             JobApplication jobApplication = application.get();
             jobApplicationRepository.delete(jobApplication);
@@ -56,7 +69,7 @@ public class JobApplicationService {
     public JobApplication updateJobApplicationById(Long id, JobApplication updatedApplication) {
         Optional<JobApplication> application = jobApplicationRepository.findById(id);
         if (application.isEmpty()) {
-            throw new IllegalStateException("Cannot find id");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
             JobApplication existingApplication = application.get();
             existingApplication.setCompanyName(updatedApplication.getCompanyName());

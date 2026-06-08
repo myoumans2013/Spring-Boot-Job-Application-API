@@ -1,9 +1,11 @@
 package com.youmanscode.jobapplicationtrackerapi.application;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Valid
 @RestController
 @RequestMapping("api/applications")
 public class JobApplicationController {
@@ -25,12 +27,12 @@ public class JobApplicationController {
     }
 
     @PostMapping()
-    public JobApplication createJobApplication(@RequestBody JobApplication jobApplication) {
+    public JobApplication createJobApplication(@Valid @RequestBody JobApplication jobApplication) {
         return jobApplicationService.createApplication(jobApplication);
     }
 
     @PutMapping("{id}")
-    public JobApplication updateJobApplicationById(@PathVariable Long id, @RequestBody JobApplication jobApplication) {
+    public JobApplication updateJobApplicationById(@PathVariable Long id, @Valid @RequestBody JobApplication jobApplication) {
         return jobApplicationService.updateJobApplicationById(id, jobApplication);
     }
 

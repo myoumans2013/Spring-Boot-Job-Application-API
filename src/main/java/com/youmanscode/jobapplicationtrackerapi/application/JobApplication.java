@@ -2,13 +2,14 @@ package com.youmanscode.jobapplicationtrackerapi.application;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import org.jspecify.annotations.NonNull;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
 
 /**
  * Create main JobApplication entity/object with contrustors/getters/setters
+ *
  */
 
 @Entity
@@ -18,21 +19,21 @@ public class JobApplication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @NotBlank(message = "Company name is mandatory")
-    String companyName;
+    private String companyName;
     @NotBlank(message = "Job title is mandatory")
-    String jobTitle;
-    @NonNull()
+    private String jobTitle;
+    @NotNull
     @Enumerated(EnumType.STRING)
-    ApplicationStatus status;
-    @NonNull()
-    LocalDate dateApplied;
+    private ApplicationStatus status;
+    @NotNull
+    private LocalDate dateApplied;
     String jobLink;
     String notes;
 
     public JobApplication() {
     }
 
-    public JobApplication(Long id, String companyName, @NonNull ApplicationStatus status, String jobTitle, LocalDate dateApplied, String jobLink, String notes) {
+    public JobApplication(Long id, String companyName, @NotNull ApplicationStatus status, String jobTitle, LocalDate dateApplied, String jobLink, String notes) {
         this.id = id;
         this.companyName = companyName;
         this.status = status;
@@ -70,7 +71,7 @@ public class JobApplication {
         return status;
     }
 
-    public void setStatus(@NonNull ApplicationStatus status) {
+    public void setStatus(@NotNull ApplicationStatus status) {
         this.status = status;
     }
 

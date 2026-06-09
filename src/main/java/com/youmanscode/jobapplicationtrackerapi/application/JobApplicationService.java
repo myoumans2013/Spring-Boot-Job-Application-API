@@ -1,11 +1,9 @@
 package com.youmanscode.jobapplicationtrackerapi.application;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,12 +21,16 @@ public class JobApplicationService {
         this.jobApplicationRepository = jobApplicationRepository;
     }
 
+    public List<JobApplication> findByStatus(ApplicationStatus status) {
+        return jobApplicationRepository.findByStatus(status);
+    }
+
+    public List<JobApplication> findByJobTitle(String jobTitle) {
+        return jobApplicationRepository.findByJobTitle(jobTitle);
+    }
+
     public List<JobApplication> getAllApplications() {
-        if (jobApplicationRepository.findAll().isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        } else {
-            return jobApplicationRepository.findAll();
-        }
+        return jobApplicationRepository.findAll();
     }
 
     public JobApplication createApplication(JobApplication jobApplication) {
@@ -45,14 +47,12 @@ public class JobApplicationService {
         }
     }
 
-    public List<JobApplication> getApplicationByID(Long id) {
+    public JobApplication getApplicationById(Long id) {
         Optional<JobApplication> application = jobApplicationRepository.findById(id);
         if (application.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
-            JobApplication jobApplication = application.get();
-            return Collections.singletonList(jobApplication);
-
+            return application.get();
         }
     }
 

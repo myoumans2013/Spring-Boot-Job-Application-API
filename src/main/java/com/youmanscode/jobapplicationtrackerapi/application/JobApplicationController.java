@@ -5,7 +5,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Valid
+/**
+ * Resetting id to 1 for Testing: Open Docker Terminal, Run:
+ * psql -U youmans -d job_application_tracker
+ * TRUNCATE TABLE job_application RESTART IDENTITY;
+ */
+
 @RestController
 @RequestMapping("api/applications")
 public class JobApplicationController {
@@ -15,15 +20,25 @@ public class JobApplicationController {
         this.jobApplicationService = jobApplicationService;
     }
 
+    @GetMapping("/jobTitle/{jobTitle}")
+    public List<JobApplication> findByJobTitle(@PathVariable String jobTitle) {
+        return jobApplicationService.findByJobTitle(jobTitle);
+    }
+
+    @GetMapping("/status/{Status}")
+    public List<JobApplication> findByStatus(@PathVariable ApplicationStatus Status) {
+        return jobApplicationService.findByStatus(Status);
+    }
+
     @GetMapping()
     public List<JobApplication> getAllApplications() {
         return jobApplicationService.getAllApplications();
     }
 
     @GetMapping("{id}")
-    public List<JobApplication> getApplicationById(@PathVariable Long id) {
+    public JobApplication getApplicationById(@PathVariable Long id) {
         System.out.println("Job application created!");
-        return jobApplicationService.getApplicationByID(id);
+        return jobApplicationService.getApplicationById(id);
     }
 
     @PostMapping()
@@ -48,5 +63,6 @@ public class JobApplicationController {
         jobApplicationService.deleteApplicationById(id);
         return "Job application #" + id + " has been deleted.";
     }
+
 
 }

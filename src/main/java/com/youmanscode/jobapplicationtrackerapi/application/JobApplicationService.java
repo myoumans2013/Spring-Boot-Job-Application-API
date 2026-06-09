@@ -16,7 +16,6 @@ public class JobApplicationService {
 
     private final JobApplicationRepository jobApplicationRepository;
 
-
     public JobApplicationService(JobApplicationRepository jobApplicationRepository) {
         this.jobApplicationRepository = jobApplicationRepository;
     }
@@ -26,7 +25,7 @@ public class JobApplicationService {
     }
 
     public List<JobApplication> findByJobTitle(String jobTitle) {
-        return jobApplicationRepository.findByJobTitle(jobTitle);
+        return jobApplicationRepository.findByJobTitleContainingIgnoreCase(jobTitle);
     }
 
     public List<JobApplication> getAllApplications() {

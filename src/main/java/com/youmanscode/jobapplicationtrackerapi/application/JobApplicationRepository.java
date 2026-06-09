@@ -11,7 +11,7 @@ public interface JobApplicationRepository extends JpaRepository<JobApplication, 
 
     List<JobApplication> findByStatus(ApplicationStatus status);
 
-    List<JobApplication> findByJobTitle(String jobTitle);
+    List<JobApplication> findByJobTitleContainingIgnoreCase(String jobTitle);
 
 }
 

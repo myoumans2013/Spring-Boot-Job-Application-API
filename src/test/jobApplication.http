@@ -41,3 +41,5 @@ DELETE http://localhost:8080/api/applications
 
 ### Delete job applications by id
 DELETE http://localhost:8080/api/applications/16
+
+

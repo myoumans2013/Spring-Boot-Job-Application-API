@@ -1,0 +1,16 @@
+### Create Interview with JobApplication Id
+POST http://localhost:8080/api/interviews/1
+Content-Type: application/json
+
+{
+  "interviewDate": "2026-06-10",
+  "interviewerName": "John Smith",
+  "interviewerType": "Phone Screen",
+  "notes": "Talked about Java and Spring Boot"
+}
+
+### GET all job applications with interviews
+GET http://localhost:8080/api/interviews
+
+### DELETE all job interviews in applications
+DELETE http://localhost:8080/api/interviews

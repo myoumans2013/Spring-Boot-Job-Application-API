@@ -1,5 +1,7 @@
 package com.youmanscode.jobapplicationtrackerapi.application;
 
+import com.youmanscode.jobapplicationtrackerapi.dto.InterviewDTO;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,18 +17,24 @@ public class InterviewController {
     }
 
     @PostMapping("{id}")
-    public Interview createInterviewById(@RequestBody Interview interview, @PathVariable Long id) {
+    public InterviewDTO createInterviewById(@RequestBody Interview interview, @PathVariable Long id) {
         return interviewService.createInterviewById(interview, id);
     }
 
     @GetMapping()
-    public List<Interview> getAllInterviews() {
+    public List<InterviewDTO> getAllInterviews() {
         return interviewService.getAllInterviews();
+    }
+
+    @GetMapping("/JopAppInterviews/{id}")
+    public List<InterviewDTO> getInterviewsPerJobApplicationId(@PathVariable Long id) {
+        return interviewService.getInterviewsPerJobApplicationId(id);
     }
 
     @DeleteMapping
     public void deleteAllInterviews() {
         interviewService.deleteAllInterviews();
     }
+
 
 }

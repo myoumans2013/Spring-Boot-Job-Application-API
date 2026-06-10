@@ -1,9 +1,11 @@
 package com.youmanscode.jobapplicationtrackerapi.application;
 
+import com.youmanscode.jobapplicationtrackerapi.dto.InterviewDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +19,22 @@ public class InterviewService {
         this.jobApplicationRepository = jobApplicationRepository;
     }
 
-    public Interview createInterviewById(Interview interview, Long id) {
+    // take in Interview object and map it to InterviewDataTransferObject (DTO)
+    public InterviewDTO mapToDTO(Interview interview) {
+        InterviewDTO interviewDTO = new InterviewDTO();
+        interviewDTO.setId(interview.getId());
+        interviewDTO.setInterviewDate(interview.getInterviewDate());
+        interviewDTO.setInterviewerType(interview.getInterviewerType());
+        interviewDTO.setInterviewerName(interview.getInterviewerName());
+        interviewDTO.setNotes(interview.getNotes());
+        interviewDTO.setJobApplicationId(interview.getJobApplication().getId());
+        interviewDTO.setCompanyName(interview.getJobApplication().getCompanyName());
+        interviewDTO.setJobTitle(interview.getJobApplication().getJobTitle());
+
+        return interviewDTO;
+    }
+
+    public InterviewDTO createInterviewById(Interview interview, Long id) {
         Optional<JobApplication> application = jobApplicationRepository.findById(id);
         if (application.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -26,11 +43,30 @@ public class InterviewService {
             interview.setJobApplication(foundJobApplication);
             interviewRepository.save(interview);
         }
-        return interview;
+        return mapToDTO(interview);
     }
 
-    public List<Interview> getAllInterviews() {
-        return interviewRepository.findAll();
+    public List<InterviewDTO> getAllInterviews() {
+        List<Interview> interviews = interviewRepository.findAll();
+        List<InterviewDTO> dtos = new ArrayList<>();
+
+        for (Interview interview : interviews) {
+            dtos.add(mapToDTO(interview));
+        }
+        return dtos;
+    }
+
+    public List<InterviewDTO> getInterviewsPerJobApplicationId(Long id) {
+        List<Interview> interviews = interviewRepository.findByJobApplication_Id(id);
+        List<InterviewDTO> dtos = new ArrayList<>();
+
+        for (Interview interview : interviews) {
+            dtos.add(mapToDTO(interview));
+        }
+
+        return dtos;
+
+
     }
 
     public void deleteAllInterviews() {

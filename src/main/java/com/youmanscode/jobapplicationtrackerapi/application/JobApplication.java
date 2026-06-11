@@ -7,12 +7,12 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 /**
- * Resetting id to 1 for Testing: Open Docker Terminal, Run:
+ * Resetting id to 1 for JobApplication and Interview / Testing
+ * Open Docker Terminal, Run:
  * psql -U youmans -d job_application_tracker
- * TRUNCATE TABLE job_application RESTART IDENTITY;
+ * TRUNCATE TABLE job_application, interview RESTART IDENTITY;
  * <p>
  * Create main JobApplication entity/object with contrustors/getters/setters
- *
  */
 
 @Entity

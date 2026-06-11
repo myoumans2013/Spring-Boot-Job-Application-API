@@ -1,5 +1,5 @@
 ### Create Interview with JobApplication Id
-POST http://localhost:8080/api/interviews/7
+POST http://localhost:8080/api/interviews/10
 Content-Type: application/json
 
 {

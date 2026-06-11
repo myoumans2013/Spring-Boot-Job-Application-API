@@ -1,15 +1,3 @@
-### GET all job applications
-GET http://localhost:8080/api/applications
-
-### GET job application by ID
-GET http://localhost:8080/api/applications/2
-
-### GET job application by jobTitle
-GET http://localhost:8080/api/applications/jobTitle/Java
-
-### GET job application by Status
-GET http://localhost:8080/api/applications/status/INTERVIEWING
-
 ### Send POST request with json body
 POST http://localhost:8080/api/applications
 Content-Type: application/json
@@ -35,6 +23,18 @@ Content-Type: application/json
   "jobLink": "https://example.com/jobsss",
   "notes": "Applied through Myspace"
 }
+
+### GET all job applications
+GET http://localhost:8080/api/applications
+
+### GET job application by ID
+GET http://localhost:8080/api/applications/2
+
+### GET job application by jobTitle
+GET http://localhost:8080/api/applications/jobTitle/Java
+
+### GET job application by Status
+GET http://localhost:8080/api/applications/status/INTERVIEWING
 
 ### Delete all job applications
 DELETE http://localhost:8080/api/applications

@@ -6,12 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Resetting id to 1 for Testing: Open Docker Terminal, Run:
- * psql -U youmans -d job_application_tracker
- * TRUNCATE TABLE job_application RESTART IDENTITY;
- */
-
 @RestController
 @RequestMapping("api/applications")
 public class JobApplicationController {

@@ -21,6 +21,11 @@ public class InterviewController {
         return interviewService.createInterviewById(interview, id);
     }
 
+    @GetMapping("/getMostRecentInterview/{id}")
+    public InterviewDTO getMostRecentInterviewByJobApplicationId(@PathVariable Long id, JobApplication jobApplication) {
+        return interviewService.getRecentInterview(jobApplication, id);
+    }
+
     @GetMapping()
     public List<InterviewDTO> getAllInterviews() {
         return interviewService.getAllInterviews();

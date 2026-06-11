@@ -1,5 +1,5 @@
 ### Create Interview with JobApplication Id
-POST http://localhost:8080/api/interviews/2
+POST http://localhost:8080/api/interviews/7
 Content-Type: application/json
 
 {
@@ -12,8 +12,11 @@ Content-Type: application/json
 ### GET all job applications with interviews
 GET http://localhost:8080/api/interviews
 
-### GET all job applications with interviews
-GET http://localhost:8080/api/interviews/JopAppInterviews/2
+### GET most recent interview by Job Application Id
+GET http://localhost:8080/api/interviews/getMostRecentInterview/7
+
+### GET all job applications per ApplicationID
+GET http://localhost:8080/api/interviews/JopAppInterviews/3
 
 ### DELETE all job interviews in applications
 DELETE http://localhost:8080/api/interviews

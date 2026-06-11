@@ -1,5 +1,6 @@
 package com.youmanscode.jobapplicationtrackerapi.application;
 
+import com.youmanscode.jobapplicationtrackerapi.dto.JobApplicationDTO;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,7 @@ public class JobApplicationController {
     }
 
     @GetMapping()
-    public List<JobApplication> getAllApplications() {
+    public List<JobApplicationDTO> getAllApplications() {
         return jobApplicationService.getAllApplications();
     }
 

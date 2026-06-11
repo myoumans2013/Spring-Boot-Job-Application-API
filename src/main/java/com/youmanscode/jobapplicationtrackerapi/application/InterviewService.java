@@ -66,7 +66,15 @@ public class InterviewService {
 
         return dtos;
 
+    }
 
+    public InterviewDTO getRecentInterview(JobApplication jobApplication, Long id) {
+        Optional<Interview> interview = interviewRepository.findFirstByJobApplicationOrderByInterviewDateDesc(jobApplication);
+        if (interview.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        Interview getInterview = interview.get();
+        return mapToDTO(getInterview);
     }
 
     public void deleteAllInterviews() {

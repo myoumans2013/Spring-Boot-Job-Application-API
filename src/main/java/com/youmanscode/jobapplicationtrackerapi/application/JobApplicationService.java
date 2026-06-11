@@ -1,9 +1,11 @@
 package com.youmanscode.jobapplicationtrackerapi.application;
 
+import com.youmanscode.jobapplicationtrackerapi.dto.JobApplicationDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,9 +17,25 @@ import java.util.Optional;
 public class JobApplicationService {
 
     private final JobApplicationRepository jobApplicationRepository;
+    private final InterviewRepository interviewRepository;
 
-    public JobApplicationService(JobApplicationRepository jobApplicationRepository) {
+    public JobApplicationService(JobApplicationRepository jobApplicationRepository, InterviewRepository interviewRepository) {
         this.jobApplicationRepository = jobApplicationRepository;
+        this.interviewRepository = interviewRepository;
+    }
+
+    public JobApplicationDTO jobApplicationDTO(JobApplication jobApplication) {
+        JobApplicationDTO jobApplicationDTO = new JobApplicationDTO();
+
+        jobApplicationDTO.setId(jobApplication.getId());
+        jobApplicationDTO.setCompanyName(jobApplication.getCompanyName());
+        jobApplicationDTO.setStatus(jobApplication.getStatus());
+        jobApplicationDTO.setDateApplied(jobApplication.getDateApplied());
+        jobApplicationDTO.setJobLink(jobApplication.getJobLink());
+        jobApplicationDTO.setNotes(jobApplication.getNotes());
+        jobApplicationDTO.setInterviewCount(interviewRepository.countInterviewsByJobApplicationId(jobApplication.getId()));
+
+        return jobApplicationDTO;
     }
 
     public List<JobApplication> findByStatus(ApplicationStatus status) {
@@ -28,8 +46,15 @@ public class JobApplicationService {
         return jobApplicationRepository.findByJobTitleContainingIgnoreCase(jobTitle);
     }
 
-    public List<JobApplication> getAllApplications() {
-        return jobApplicationRepository.findAll();
+    public List<JobApplicationDTO> getAllApplications() {
+        List<JobApplication> applications = jobApplicationRepository.findAll();
+        List<JobApplicationDTO> jobApplicationDTOS = new ArrayList<>();
+
+        for (JobApplication application : applications) {
+            jobApplicationDTOS.add(jobApplicationDTO(application));
+        }
+
+        return jobApplicationDTOS;
     }
 
     public JobApplication createApplication(JobApplication jobApplication) {
@@ -57,13 +82,11 @@ public class JobApplicationService {
 
     public void deleteApplicationById(Long id) {
         Optional<JobApplication> application = jobApplicationRepository.findById(id);
-        if (application.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        } else {
-            JobApplication jobApplication = application.get();
-            jobApplicationRepository.delete(jobApplication);
-        }
+        JobApplication jobApplication = application.get();
+        jobApplicationRepository.delete(jobApplication);
+
     }
+
 
     public JobApplication updateJobApplicationById(Long id, JobApplication updatedApplication) {
         Optional<JobApplication> application = jobApplicationRepository.findById(id);

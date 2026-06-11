@@ -22,8 +22,8 @@ public class JobApplication {
     private String companyName;
     @NotBlank(message = "Job title is mandatory")
     private String jobTitle;
-    @NotNull
     @Enumerated(EnumType.STRING)
+    @NotNull
     private ApplicationStatus status;
     @NotNull
     private LocalDate dateApplied;

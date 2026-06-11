@@ -16,13 +16,13 @@ public class JobApplicationController {
     }
 
     @GetMapping("/jobTitle/{jobTitle}")
-    public List<JobApplication> findByJobTitle(@PathVariable String jobTitle) {
+    public List<JobApplicationDTO> findByJobTitle(@PathVariable String jobTitle) {
         return jobApplicationService.findByJobTitle(jobTitle);
     }
 
-    @GetMapping("/status/{Status}")
-    public List<JobApplication> findByStatus(@PathVariable ApplicationStatus Status) {
-        return jobApplicationService.findByStatus(Status);
+    @GetMapping("/status/{status}")
+    public List<JobApplicationDTO> findByStatus(@PathVariable ApplicationStatus status) {
+        return jobApplicationService.findByStatus(status);
     }
 
     @GetMapping()

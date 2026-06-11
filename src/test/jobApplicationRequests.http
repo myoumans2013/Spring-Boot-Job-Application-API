@@ -34,7 +34,7 @@ GET http://localhost:8080/api/applications/2
 GET http://localhost:8080/api/applications/jobTitle/Java
 
 ### GET job application by Status
-GET http://localhost:8080/api/applications/status/INTERVIEWING
+GET http://localhost:8080/api/applications/status/OFFER
 
 ### Delete all job applications
 DELETE http://localhost:8080/api/applications

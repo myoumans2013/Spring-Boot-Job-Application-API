@@ -29,6 +29,7 @@ public class JobApplicationService {
 
         jobApplicationDTO.setId(jobApplication.getId());
         jobApplicationDTO.setCompanyName(jobApplication.getCompanyName());
+        jobApplicationDTO.setJobTitle(jobApplication.getJobTitle());
         jobApplicationDTO.setStatus(jobApplication.getStatus());
         jobApplicationDTO.setDateApplied(jobApplication.getDateApplied());
         jobApplicationDTO.setJobLink(jobApplication.getJobLink());
@@ -38,12 +39,28 @@ public class JobApplicationService {
         return jobApplicationDTO;
     }
 
-    public List<JobApplication> findByStatus(ApplicationStatus status) {
-        return jobApplicationRepository.findByStatus(status);
+    public List<JobApplicationDTO> findByStatus(ApplicationStatus status) {
+        List<JobApplication> getJobApplications = jobApplicationRepository.findByStatus(status);
+        List<JobApplicationDTO> applicationDTOS = new ArrayList<>();
+        if (getJobApplications.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        for (JobApplication applications : getJobApplications) {
+            applicationDTOS.add(jobApplicationDTO(applications));
+        }
+        return applicationDTOS;
     }
 
-    public List<JobApplication> findByJobTitle(String jobTitle) {
-        return jobApplicationRepository.findByJobTitleContainingIgnoreCase(jobTitle);
+    public List<JobApplicationDTO> findByJobTitle(String jobTitle) {
+        List<JobApplication> getJobApplications = jobApplicationRepository.findByJobTitleContainingIgnoreCase(jobTitle);
+        List<JobApplicationDTO> applicationDTOS = new ArrayList<>();
+        if (getJobApplications.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        for (JobApplication applications : getJobApplications) {
+            applicationDTOS.add(jobApplicationDTO(applications));
+        }
+        return applicationDTOS;
     }
 
     public List<JobApplicationDTO> getAllApplications() {

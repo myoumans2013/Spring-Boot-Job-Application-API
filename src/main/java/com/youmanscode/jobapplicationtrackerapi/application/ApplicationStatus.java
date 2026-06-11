@@ -1,6 +1,5 @@
 package com.youmanscode.jobapplicationtrackerapi.application;
 
-
 /**
  * Create defined status values
  */

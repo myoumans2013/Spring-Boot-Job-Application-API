@@ -8,16 +8,17 @@ public class JobApplicationDTO {
 
     private Long id;
     private String companyName;
+    private String jobTitle;
     private ApplicationStatus status;
     private LocalDate dateApplied;
     private String jobLink;
     private String notes;
     private int interviewCount;
-    private LocalDate lastestInterviewDate;
 
-    public JobApplicationDTO(Long id, String companyName, ApplicationStatus status, LocalDate dateApplied, String jobLink, String notes, int interviewCount) {
+    public JobApplicationDTO(Long id, String companyName, String jobTitle, ApplicationStatus status, LocalDate dateApplied, String jobLink, String notes, int interviewCount) {
         this.id = id;
         this.companyName = companyName;
+        this.jobTitle = jobTitle;
         this.status = status;
         this.dateApplied = dateApplied;
         this.jobLink = jobLink;
@@ -42,6 +43,14 @@ public class JobApplicationDTO {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
     }
 
     public ApplicationStatus getStatus() {
@@ -75,6 +84,7 @@ public class JobApplicationDTO {
     public void setJobLink(String jobLink) {
         this.jobLink = jobLink;
     }
+
 
     public int getInterviewCount() {
         return interviewCount;

@@ -2,10 +2,13 @@ package com.youmanscode.jobapplicationtrackerapi.application;
 
 import com.youmanscode.jobapplicationtrackerapi.dto.JobApplicationDTO;
 import jakarta.validation.Valid;
+import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("api/applications")
 public class JobApplicationController {
@@ -26,8 +29,8 @@ public class JobApplicationController {
     }
 
     @GetMapping()
-    public List<JobApplicationDTO> getAllApplications() {
-        return jobApplicationService.getAllApplications();
+    public List<JobApplicationDTO> getAllApplications(LocalDate date) {
+        return jobApplicationService.getAllApplications(date);
     }
 
     @GetMapping("{id}")

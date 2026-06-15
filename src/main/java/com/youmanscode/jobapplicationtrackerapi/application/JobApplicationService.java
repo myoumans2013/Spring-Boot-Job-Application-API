@@ -1,10 +1,12 @@
 package com.youmanscode.jobapplicationtrackerapi.application;
 
 import com.youmanscode.jobapplicationtrackerapi.dto.JobApplicationDTO;
+import org.springframework.cglib.core.Local;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -63,8 +65,8 @@ public class JobApplicationService {
         return applicationDTOS;
     }
 
-    public List<JobApplicationDTO> getAllApplications() {
-        List<JobApplication> applications = jobApplicationRepository.findAll();
+    public List<JobApplicationDTO> getAllApplications(LocalDate date) {
+        List<JobApplication> applications = jobApplicationRepository.findAllByOrderByDateAppliedDesc(date);
         List<JobApplicationDTO> jobApplicationDTOS = new ArrayList<>();
 
         for (JobApplication application : applications) {

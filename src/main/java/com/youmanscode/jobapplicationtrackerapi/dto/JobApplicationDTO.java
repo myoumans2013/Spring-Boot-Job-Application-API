@@ -1,5 +1,6 @@
 package com.youmanscode.jobapplicationtrackerapi.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.youmanscode.jobapplicationtrackerapi.application.ApplicationStatus;
 
 import java.time.LocalDate;

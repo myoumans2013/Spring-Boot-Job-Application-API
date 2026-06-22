@@ -82,4 +82,13 @@ public class InterviewService {
     }
 
 
+    public void deleteInterviewByJobApplicationId(Long id) {
+        Optional<Interview> interviews = interviewRepository.findByJobApplication_IdOrderById(id);
+        if (interviews.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            Interview interview = interviews.get();
+            interviewRepository.delete(interview);
+        }
+    }
 }

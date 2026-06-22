@@ -14,4 +14,7 @@ public interface InterviewRepository extends JpaRepository<Interview, Long> {
     int countInterviewsByJobApplicationId(Long id);
 
     Optional<Interview> findFirstByJobApplicationOrderByInterviewDateDesc(JobApplication id);
+
+    Optional<Interview> findByJobApplication_IdOrderById(Long jobApplicationId);
+
 }

@@ -16,7 +16,10 @@ GET http://localhost:8080/api/interviews
 GET http://localhost:8080/api/interviews/getMostRecentInterview/7
 
 ### GET all job applications per ApplicationID
-GET http://localhost:8080/api/interviews/JopAppInterviews/3
+GET http://localhost:8080/api/interviews/JopAppInterviews/18
 
 ### DELETE all job interviews in applications
 DELETE http://localhost:8080/api/interviews
+
+### DELETE all job interviews by Job Application Id
+DELETE http://localhost:8080/api/interviews/deleteJobInterviewsByJobAppId/18

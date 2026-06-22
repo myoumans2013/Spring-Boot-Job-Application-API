@@ -37,6 +37,11 @@ public class InterviewController {
         return interviewService.getInterviewsPerJobApplicationId(id);
     }
 
+    @DeleteMapping({"/deleteJobInterviewsByJobAppId/{id}"})
+    public void deleteInterviewByJobApplicationId(@PathVariable Long id) {
+        interviewService.deleteInterviewByJobApplicationId(id);
+    }
+
     @DeleteMapping
     public void deleteAllInterviews() {
         interviewService.deleteAllInterviews();

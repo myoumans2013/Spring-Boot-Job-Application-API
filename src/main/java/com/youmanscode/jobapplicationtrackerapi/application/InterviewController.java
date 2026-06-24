@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://spring-boot-job-application-api.onrender.com")
 @RestController
 @RequestMapping("api/interviews")
 public class InterviewController {

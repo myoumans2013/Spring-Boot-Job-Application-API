@@ -82,8 +82,8 @@ public class InterviewService {
     }
 
 
-    public void deleteInterviewByJobApplicationId(Long id) {
-        Optional<Interview> interviews = interviewRepository.findByJobApplication_IdOrderById(id);
+    public void deleteInterviewByInterviewId(Long id) {
+        Optional<Interview> interviews = interviewRepository.findById(id);
         if (interviews.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {

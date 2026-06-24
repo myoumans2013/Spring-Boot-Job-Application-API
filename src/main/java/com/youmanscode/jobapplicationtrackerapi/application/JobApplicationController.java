@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@CrossOrigin(origins = "https://spring-boot-job-application-api.onrender.com")
+@CrossOrigin(origins = "https://job-application-tracker-frontend-2o21.onrender.com")
 @RestController
 @RequestMapping("api/applications")
 public class JobApplicationController {

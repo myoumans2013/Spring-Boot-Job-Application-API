@@ -2,7 +2,6 @@ package com.youmanscode.jobapplicationtrackerapi.application;
 
 import com.youmanscode.jobapplicationtrackerapi.dto.JobApplicationDTO;
 import jakarta.validation.Valid;
-import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;

@@ -101,6 +101,9 @@ public class JobApplicationService {
 
     public void deleteApplicationById(Long id) {
         Optional<JobApplication> application = jobApplicationRepository.findById(id);
+        if (application.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
         JobApplication jobApplication = application.get();
         jobApplicationRepository.delete(jobApplication);
 

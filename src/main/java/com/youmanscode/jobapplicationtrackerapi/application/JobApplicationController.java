@@ -27,6 +27,11 @@ public class JobApplicationController {
         return jobApplicationService.findByStatus(status);
     }
 
+    @GetMapping("/health")
+    public String wakeBackendUp() {
+        return "Backend is running";
+    }
+
     @GetMapping()
     public List<JobApplicationDTO> getAllApplications(LocalDate date) {
         return jobApplicationService.getAllApplications(date);

@@ -1,7 +1,10 @@
-package com.youmanscode.jobapplicationtrackerapi.application;
+package com.youmanscode.jobapplicationtrackerapi.service;
 
 import com.youmanscode.jobapplicationtrackerapi.dto.JobApplicationDTO;
-import org.springframework.cglib.core.Local;
+import com.youmanscode.jobapplicationtrackerapi.entity.JobApplication;
+import com.youmanscode.jobapplicationtrackerapi.enums.ApplicationStatus;
+import com.youmanscode.jobapplicationtrackerapi.repository.InterviewRepository;
+import com.youmanscode.jobapplicationtrackerapi.repository.JobApplicationRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;

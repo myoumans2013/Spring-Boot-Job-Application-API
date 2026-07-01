@@ -1,6 +1,7 @@
-package com.youmanscode.jobapplicationtrackerapi.application;
+package com.youmanscode.jobapplicationtrackerapi.repository;
 
-import org.springframework.cglib.core.Local;
+import com.youmanscode.jobapplicationtrackerapi.entity.JobApplication;
+import com.youmanscode.jobapplicationtrackerapi.enums.ApplicationStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;

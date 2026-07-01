@@ -1,4 +1,4 @@
-package com.youmanscode.jobapplicationtrackerapi.application;
+package com.youmanscode.jobapplicationtrackerapi.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

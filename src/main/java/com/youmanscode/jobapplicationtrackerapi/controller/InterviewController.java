@@ -1,7 +1,10 @@
-package com.youmanscode.jobapplicationtrackerapi.application;
+package com.youmanscode.jobapplicationtrackerapi.controller;
 
+import com.youmanscode.jobapplicationtrackerapi.service.InterviewService;
 import com.youmanscode.jobapplicationtrackerapi.dto.InterviewDTO;
 
+import com.youmanscode.jobapplicationtrackerapi.entity.Interview;
+import com.youmanscode.jobapplicationtrackerapi.entity.JobApplication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

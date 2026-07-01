@@ -1,4 +1,4 @@
-package com.youmanscode.jobapplicationtrackerapi.application;
+package com.youmanscode.jobapplicationtrackerapi.enums;
 
 /**
  * Create defined status values

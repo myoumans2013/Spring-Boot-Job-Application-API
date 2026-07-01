@@ -1,6 +1,6 @@
-package com.youmanscode.jobapplicationtrackerapi.application;
+package com.youmanscode.jobapplicationtrackerapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.youmanscode.jobapplicationtrackerapi.enums.ApplicationStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

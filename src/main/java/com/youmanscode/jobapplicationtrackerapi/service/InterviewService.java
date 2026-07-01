@@ -1,6 +1,10 @@
-package com.youmanscode.jobapplicationtrackerapi.application;
+package com.youmanscode.jobapplicationtrackerapi.service;
 
+import com.youmanscode.jobapplicationtrackerapi.repository.InterviewRepository;
+import com.youmanscode.jobapplicationtrackerapi.repository.JobApplicationRepository;
 import com.youmanscode.jobapplicationtrackerapi.dto.InterviewDTO;
+import com.youmanscode.jobapplicationtrackerapi.entity.Interview;
+import com.youmanscode.jobapplicationtrackerapi.entity.JobApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;

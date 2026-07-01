@@ -1,6 +1,9 @@
-package com.youmanscode.jobapplicationtrackerapi.application;
+package com.youmanscode.jobapplicationtrackerapi.controller;
 
+import com.youmanscode.jobapplicationtrackerapi.service.JobApplicationService;
 import com.youmanscode.jobapplicationtrackerapi.dto.JobApplicationDTO;
+import com.youmanscode.jobapplicationtrackerapi.entity.JobApplication;
+import com.youmanscode.jobapplicationtrackerapi.enums.ApplicationStatus;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 

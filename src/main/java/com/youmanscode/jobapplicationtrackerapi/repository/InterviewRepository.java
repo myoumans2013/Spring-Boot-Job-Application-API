@@ -1,5 +1,7 @@
-package com.youmanscode.jobapplicationtrackerapi.application;
+package com.youmanscode.jobapplicationtrackerapi.repository;
 
+import com.youmanscode.jobapplicationtrackerapi.entity.Interview;
+import com.youmanscode.jobapplicationtrackerapi.entity.JobApplication;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -7,11 +7,19 @@ import com.youmanscode.jobapplicationtrackerapi.entity.Interview;
 import com.youmanscode.jobapplicationtrackerapi.entity.JobApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+import com.youmanscode.jobapplicationtrackerapi.exceptionHandling.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+
+
+
+/*
+Edit Global Exception Handling, create Exception Handling DTO for sending correct error messaging
+ */
+
 
 @Service
 public class InterviewService {
@@ -41,7 +49,7 @@ public class InterviewService {
     public InterviewDTO createInterviewById(Interview interview, Long id) {
         Optional<JobApplication> application = jobApplicationRepository.findById(id);
         if (application.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException("Cannot create Interview");
         } else {
             JobApplication foundJobApplication = application.get();
             interview.setJobApplication(foundJobApplication);
@@ -75,7 +83,7 @@ public class InterviewService {
     public InterviewDTO getRecentInterview(JobApplication jobApplication, Long id) {
         Optional<Interview> interview = interviewRepository.findFirstByJobApplicationOrderByInterviewDateDesc(jobApplication);
         if (interview.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException("Cannot find interviews.");
         }
         Interview getInterview = interview.get();
         return mapToDTO(getInterview);
@@ -89,10 +97,10 @@ public class InterviewService {
     public void deleteInterviewByInterviewId(Long id) {
         Optional<Interview> interviews = interviewRepository.findById(id);
         if (interviews.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        } else {
-            Interview interview = interviews.get();
-            interviewRepository.delete(interview);
+            throw new ResponseStatusException("Cannot delete interview");
         }
+        Interview interview = interviews.get();
+        interviewRepository.delete(interview);
     }
 }
+

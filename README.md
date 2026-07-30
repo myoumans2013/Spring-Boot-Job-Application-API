@@ -8,8 +8,10 @@ A Spring Boot REST API for tracking job applications and interviews.
 - Spring Boot
 - Spring Data JPA
 - PostgreSQL
+- Supabase PostgreSQL
 - Docker Compose
 - Gradle
+- Render Deployment
 
 ## Features
 
@@ -17,7 +19,9 @@ A Spring Boot REST API for tracking job applications and interviews.
 - Filter applications by status
 - Search applications by job title
 - Add interviews to job applications
-- PostgreSQL persistence with Docker
+- PostgreSQL persistence
+- Supabase cloud database
+- Render backend deployment
 - Basic validation and error handling
 
 ## Main Endpoints
@@ -37,9 +41,15 @@ A Spring Boot REST API for tracking job applications and interviews.
 - `POST /api/interviews/{applicationId}`
 - `GET /api/interviews`
 
+## Deployment
+
+This API is deployed using Render.
+
+The production database is hosted with Supabase PostgreSQL.
+
 ## Run Locally
 
-Start PostgreSQL:
+Start PostgreSQL with Docker:
 
 ```bash
 docker compose up -d

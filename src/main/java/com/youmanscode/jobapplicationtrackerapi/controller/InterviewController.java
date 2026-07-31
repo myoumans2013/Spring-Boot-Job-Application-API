@@ -25,7 +25,7 @@ public class InterviewController {
         return interviewService.createInterviewById(interview, id);
     }
 
-    @GetMapping("/getMostRecentInterview/{id}")
+    @GetMapping("getMostRecentInterview/{id}")
     public InterviewDTO getMostRecentInterviewByJobApplicationId(@PathVariable Long id, JobApplication jobApplication) {
         return interviewService.getRecentInterview(jobApplication, id);
     }
@@ -35,12 +35,12 @@ public class InterviewController {
         return interviewService.getAllInterviews();
     }
 
-    @GetMapping("/JopAppInterviews/{id}")
+    @GetMapping("JopAppInterviews/{id}")
     public List<InterviewDTO> getInterviewsPerJobApplicationId(@PathVariable Long id) {
         return interviewService.getInterviewsPerJobApplicationId(id);
     }
 
-    @DeleteMapping({"/deleteJobInterviewsByJobAppId/{id}"})
+    @DeleteMapping({"deleteJobInterviewsByJobAppId/{id}"})
     public void deleteInterviewByInterviewId(@PathVariable Long id) {
         interviewService.deleteInterviewByInterviewId(id);
     }

@@ -3,7 +3,6 @@ package com.youmanscode.jobapplicationtrackerapi.service;
 import com.youmanscode.jobapplicationtrackerapi.dto.JobApplicationDTO;
 import com.youmanscode.jobapplicationtrackerapi.entity.JobApplication;
 import com.youmanscode.jobapplicationtrackerapi.enums.ApplicationStatus;
-import com.youmanscode.jobapplicationtrackerapi.repository.InterviewRepository;
 import com.youmanscode.jobapplicationtrackerapi.repository.JobApplicationRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -22,11 +21,9 @@ import java.util.Optional;
 public class JobApplicationService {
 
     private final JobApplicationRepository jobApplicationRepository;
-    private final InterviewRepository interviewRepository;
 
-    public JobApplicationService(JobApplicationRepository jobApplicationRepository, InterviewRepository interviewRepository) {
+    public JobApplicationService(JobApplicationRepository jobApplicationRepository) {
         this.jobApplicationRepository = jobApplicationRepository;
-        this.interviewRepository = interviewRepository;
     }
 
     public JobApplicationDTO jobApplicationDTO(JobApplication jobApplication) {
@@ -39,7 +36,6 @@ public class JobApplicationService {
         jobApplicationDTO.setDateApplied(jobApplication.getDateApplied());
         jobApplicationDTO.setJobLink(jobApplication.getJobLink());
         jobApplicationDTO.setNotes(jobApplication.getNotes());
-        jobApplicationDTO.setInterviewCount(interviewRepository.countInterviewsByJobApplicationId(jobApplication.getId()));
 
         return jobApplicationDTO;
     }

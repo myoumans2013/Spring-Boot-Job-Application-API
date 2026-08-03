@@ -13,9 +13,8 @@ public class JobApplicationDTO {
     private LocalDate dateApplied;
     private String jobLink;
     private String notes;
-    private int interviewCount;
 
-    public JobApplicationDTO(Long id, String companyName, String jobTitle, ApplicationStatus status, LocalDate dateApplied, String jobLink, String notes, int interviewCount) {
+    public JobApplicationDTO(Long id, String companyName, String jobTitle, ApplicationStatus status, LocalDate dateApplied, String jobLink, String notes) {
         this.id = id;
         this.companyName = companyName;
         this.jobTitle = jobTitle;
@@ -23,7 +22,6 @@ public class JobApplicationDTO {
         this.dateApplied = dateApplied;
         this.jobLink = jobLink;
         this.notes = notes;
-        this.interviewCount = interviewCount;
     }
 
     public JobApplicationDTO() {
@@ -85,12 +83,4 @@ public class JobApplicationDTO {
         this.jobLink = jobLink;
     }
 
-
-    public int getInterviewCount() {
-        return interviewCount;
-    }
-
-    public void setInterviewCount(int interviewCount) {
-        this.interviewCount = interviewCount;
-    }
 }

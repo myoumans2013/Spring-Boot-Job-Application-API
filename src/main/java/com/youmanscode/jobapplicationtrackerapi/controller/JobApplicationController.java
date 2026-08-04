@@ -20,12 +20,12 @@ public class JobApplicationController {
         this.jobApplicationService = jobApplicationService;
     }
 
-    @GetMapping("/jobTitle/{jobTitle}")
+    @GetMapping("jobTitle/{jobTitle}")
     public List<JobApplicationDTO> findByJobTitle(@PathVariable String jobTitle) {
         return jobApplicationService.findByJobTitle(jobTitle);
     }
 
-    @GetMapping("/status/{status}")
+    @GetMapping("status/{status}")
     public List<JobApplicationDTO> findByStatus(@PathVariable ApplicationStatus status) {
         return jobApplicationService.findByStatus(status);
     }

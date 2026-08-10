@@ -31,6 +31,7 @@ public class JobApplication {
     private ApplicationStatus status;
     @NotNull
     private LocalDate dateApplied;
+    @Column(length = 300)
     String jobLink;
     String notes;
 

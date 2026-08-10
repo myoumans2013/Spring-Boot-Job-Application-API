@@ -19,7 +19,7 @@ public class InterviewController {
         this.interviewService = interviewService;
     }
 
-    @PostMapping("{id}")
+    @PostMapping("createInterview/{id}")
     public InterviewDTO createInterviewById(@RequestBody Interview interview, @PathVariable Long id) {
         return interviewService.createInterviewById(interview, id);
     }
@@ -44,7 +44,7 @@ public class InterviewController {
         interviewService.deleteInterviewByInterviewId(id);
     }
 
-    @DeleteMapping
+    @DeleteMapping("deleteAll")
     public void deleteAllInterviews() {
         interviewService.deleteAllInterviews();
     }

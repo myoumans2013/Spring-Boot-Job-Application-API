@@ -1,11 +1,11 @@
 ### Send POST request with json body
-POST http://localhost:8080/api/applications
+POST http://localhost:8080/api/applications/createApplication
 Content-Type: application/json
 
 {
   "companyName": "Lockheed Martin",
   "jobTitle": "Junior Java Developer",
-  "status": "INTERVIEWING",
+  "status": "OFFER",
   "dateApplied": "2026-06-06",
   "jobLink": "https://example.com/job",
   "notes": "Applied through Linken"

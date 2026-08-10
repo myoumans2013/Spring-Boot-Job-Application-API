@@ -25,7 +25,8 @@ Content-Type: application/json
 }
 
 ### GET all job applications
-GET http://localhost:8080/api/applications
+GET http://localhost:8080/api/applications/getAll
+Authorization: Basic user 3ca219ef-c1b5-4c7e-af16-cfaba2563e0d
 
 ### GET job application by ID
 GET http://localhost:8080/api/applications/2

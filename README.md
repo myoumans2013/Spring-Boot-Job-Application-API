@@ -28,18 +28,25 @@ A Spring Boot REST API for tracking job applications and interviews.
 
 ### Job Applications
 
-- `GET /api/applications`
-- `GET /api/applications/{id}`
-- `POST /api/applications`
-- `PUT /api/applications/{id}`
-- `DELETE /api/applications/{id}`
+### Job Applications
+
+- `GET /api/applications/getAll`
+- `GET /api/applications/getApplication/{id}`
+- `POST /api/applications/createApplication`
+- `PUT /api/applications/updateApplication/{id}`
+- `DELETE /api/applications/deleteApplication/{id}`
+- `DELETE /api/applications/deleteAll`
 - `GET /api/applications/status/{status}`
 - `GET /api/applications/jobTitle/{jobTitle}`
 
 ### Interviews
 
-- `POST /api/interviews/{applicationId}`
-- `GET /api/interviews`
+- `POST /api/interviews/createInterview/{id}`
+- `GET /api/interviews/getMostRecentInterview/{id}`
+- `GET /api/interviews/getAll`
+- `GET /api/interviews/JopAppInterviews/{id}`
+- `DELETE /api/interviews/deleteInterview/{id}`
+- `DELETE /api/interviews/deleteAll`
 
 ## Deployment
 

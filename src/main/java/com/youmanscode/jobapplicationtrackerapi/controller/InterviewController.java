@@ -39,7 +39,7 @@ public class InterviewController {
         return interviewService.getInterviewsPerJobApplicationId(id);
     }
 
-    @DeleteMapping({"deleteJobInterviewsByJobAppId/{id}"})
+    @DeleteMapping({"deleteInterview/{id}"})
     public void deleteInterviewByInterviewId(@PathVariable Long id) {
         interviewService.deleteInterviewByInterviewId(id);
     }

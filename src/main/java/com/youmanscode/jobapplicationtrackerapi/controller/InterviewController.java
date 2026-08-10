@@ -29,7 +29,7 @@ public class InterviewController {
         return interviewService.getRecentInterview(jobApplication, id);
     }
 
-    @GetMapping()
+    @GetMapping("getAll")
     public List<InterviewDTO> getAllInterviews() {
         return interviewService.getAllInterviews();
     }

@@ -29,35 +29,35 @@ public class JobApplicationController {
         return jobApplicationService.findByStatus(status);
     }
 
-    @GetMapping()
+    @GetMapping("getAll")
     public List<JobApplicationDTO> getAllApplications(LocalDate date) {
         return jobApplicationService.getAllApplications(date);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("getApplication/{id}")
     public JobApplication getApplicationById(@PathVariable Long id) {
         System.out.println("Job application created!");
         return jobApplicationService.getApplicationById(id);
     }
 
-    @PostMapping()
+    @PostMapping("createApplication")
     public JobApplication createJobApplication(@Valid @RequestBody JobApplication jobApplication) {
         return jobApplicationService.createApplication(jobApplication);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("updateApplication/{id}")
     public JobApplication updateJobApplicationById(@PathVariable Long id, @Valid @RequestBody JobApplication jobApplication) {
         return jobApplicationService.updateJobApplicationById(id, jobApplication);
     }
 
 
-    @DeleteMapping
+    @DeleteMapping("deleteAll")
     public String deleteAllApplications() {
         jobApplicationService.deleteAllApplications();
         return "All applications have been deleted.";
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("deleteApplication/{id}")
     public String deleteApplicationById(@PathVariable Long id) {
         jobApplicationService.deleteApplicationById(id);
         return "Job application #" + id + " has been deleted.";

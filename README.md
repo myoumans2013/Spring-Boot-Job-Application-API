@@ -1,55 +1,136 @@
-# Job Application Tracker API
+# Job Application Tracker
 
-A Spring Boot REST API for tracking job applications and interviews.
+A full-stack job application tracker built with Spring Boot, React, and PostgreSQL for managing job applications and interviews.
 
 ## Tech Stack
 
+### Backend
 - Java 17
 - Spring Boot
 - Spring Data JPA
 - PostgreSQL
-- Supabase PostgreSQL
-- Docker Compose
 - Gradle
-- Render Deployment
+- Docker Compose
+
+### Frontend
+- React
+- Vite
+- JavaScript
+- CSS
+
+### Deployment
+- Render
+- Supabase PostgreSQL
 
 ## Features
 
 - Create, read, update, and delete job applications
-- Filter applications by status
+- Filter applications by application status
 - Search applications by job title
-- Add interviews to job applications
+- Add interviews to individual job applications
+- Delete interviews
+- Display job applications and interviews through React
+- Loading and error handling
+- Delete confirmation
 - PostgreSQL persistence
-- Supabase cloud database
-- Render backend deployment
-- Basic validation and error handling
+- Separate local and production environments
+- Local PostgreSQL development with Docker
+- Production PostgreSQL database with Supabase
+- Frontend and backend deployment with Render
 
-## Main Endpoints
+## Project Structure
+
+The application follows a standard frontend/backend architecture:
+
+React Frontend  
+↓  
+Spring Boot REST API  
+↓  
+Spring Data JPA  
+↓  
+PostgreSQL
+
+The backend is separated into:
+
+- Controllers
+- Services
+- Repositories
+- Entities
+- DTOs
+- API configuration
+
+The frontend separates:
+
+- React components
+- Application state
+- API request functions
+- Styling
+
+## Main API Endpoints
 
 ### Job Applications
 
-- `GET /api/applications`
-- `GET /api/applications/{id}`
-- `POST /api/applications`
-- `PUT /api/applications/{id}`
-- `DELETE /api/applications/{id}`
+- `GET /api/applications/getAll`
+- `GET /api/applications/getApplication/{id}`
+- `POST /api/applications/createApplication`
+- `PUT /api/applications/updateApplication/{id}`
+- `DELETE /api/applications/deleteApplication/{id}`
+- `DELETE /api/applications/deleteAll`
 - `GET /api/applications/status/{status}`
 - `GET /api/applications/jobTitle/{jobTitle}`
 
 ### Interviews
 
-- `POST /api/interviews/{applicationId}`
-- `GET /api/interviews`
+- `POST /api/interviews/createInterview/{id}`
+- `GET /api/interviews/getMostRecentInterview/{id}`
+- `GET /api/interviews/getAll`
+- `GET /api/interviews/JopAppInterviews/{id}`
+- `DELETE /api/interviews/deleteInterview/{id}`
+- `DELETE /api/interviews/deleteAll`
 
-## Deployment
+## Development Environments
 
-This API is deployed using Render.
+The project uses separate local and production configurations.
 
-The production database is hosted with Supabase PostgreSQL.
+### Local Development
+
+Local development uses:
+
+- React/Vite on `localhost:5173`
+- Spring Boot on `localhost:8080`
+- PostgreSQL through Docker Compose
+- Spring Boot `local` profile
+- Vite `.env.development`
+
+Flow:
+
+React  
+↓  
+Local Spring Boot API  
+↓  
+Local Docker PostgreSQL
+
+### Production
+
+Production uses:
+
+- Render frontend
+- Render backend
+- Supabase PostgreSQL
+- Render environment variables
+- Vite `.env.production`
+
+Flow:
+
+Render Frontend  
+↓  
+Render Spring Boot API  
+↓  
+Supabase PostgreSQL
 
 ## Run Locally
 
-Start PostgreSQL with Docker:
+Start PostgreSQL:
 
 ```bash
 docker compose up -d

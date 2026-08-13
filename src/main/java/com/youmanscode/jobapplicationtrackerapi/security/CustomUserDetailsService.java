@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+// loads user from userdetails for authentication
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
     private final CustomUserRepository customUserRepository;

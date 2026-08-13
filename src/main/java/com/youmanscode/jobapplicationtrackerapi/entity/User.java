@@ -2,9 +2,8 @@ package com.youmanscode.jobapplicationtrackerapi.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.UniqueElements;
-import org.jspecify.annotations.NonNull;
 
+// database tables for user
 @Entity
 public class User {
     @Id

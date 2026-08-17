@@ -1,7 +1,8 @@
 package com.youmanscode.jobapplicationtrackerapi.service;
 
 import com.youmanscode.jobapplicationtrackerapi.entity.User;
-import com.youmanscode.jobapplicationtrackerapi.security.CustomUserRepository;
+import com.youmanscode.jobapplicationtrackerapi.exceptionHandling.UsernameNotFoundException;
+import com.youmanscode.jobapplicationtrackerapi.repository.CustomUserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,11 @@ public class UserService {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         return customUserRepository.save(user);
+    }
+
+    public void deleteUser(Long id) {
+        User user = customUserRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("Cannot find account."));
+        customUserRepository.delete(user);
     }
 }

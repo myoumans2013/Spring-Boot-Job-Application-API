@@ -2,6 +2,7 @@ package com.youmanscode.jobapplicationtrackerapi.security;
 
 import com.youmanscode.jobapplicationtrackerapi.entity.User;
 import com.youmanscode.jobapplicationtrackerapi.exceptionHandling.UsernameNotFoundException;
+import com.youmanscode.jobapplicationtrackerapi.repository.CustomUserRepository;
 import org.jspecify.annotations.NonNull;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

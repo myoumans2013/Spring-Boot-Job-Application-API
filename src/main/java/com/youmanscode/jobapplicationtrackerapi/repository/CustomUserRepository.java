@@ -1,4 +1,4 @@
-package com.youmanscode.jobapplicationtrackerapi.security;
+package com.youmanscode.jobapplicationtrackerapi.repository;
 
 import com.youmanscode.jobapplicationtrackerapi.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

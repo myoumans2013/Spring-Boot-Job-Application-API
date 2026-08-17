@@ -1,10 +1,17 @@
 package com.youmanscode.jobapplicationtrackerapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 // database tables for user
 @Entity
+@Table(name = "users")
+@JsonPropertyOrder({
+        "id",
+        "username",
+        "password"
+})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

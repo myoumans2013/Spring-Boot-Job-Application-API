@@ -1,0 +1,14 @@
+POST http://localhost:8080/api/user/createUser
+Content-Type: application/json
+
+{
+  "username": "devo",
+  "password": "password"
+}
+
+### Basic authorization with variables.
+GET http://localhost:8080/api/applications/getAll
+Authorization: Basic devot password
+
+###
+DELETE http://localhost:8080/api/user/deleteUser/3

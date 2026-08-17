@@ -21,7 +21,6 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests(auth -> {
             auth.requestMatchers(POST, "/api/user/createUser").permitAll();
-            auth.requestMatchers(DELETE, "/api/user/deleteUser/*").authenticated();
             auth.anyRequest().authenticated();
         });
         http.httpBasic(Customizer.withDefaults());

@@ -1,6 +1,7 @@
-package com.youmanscode.jobapplicationtrackerapi.security;
+package com.youmanscode.jobapplicationtrackerapi.service;
 
 import com.youmanscode.jobapplicationtrackerapi.entity.User;
+import com.youmanscode.jobapplicationtrackerapi.security.CustomUserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

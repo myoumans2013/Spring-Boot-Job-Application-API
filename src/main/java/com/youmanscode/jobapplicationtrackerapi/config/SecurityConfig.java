@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.http.HttpMethod.POST;
+
 // define security rules
 @Configuration
 public class SecurityConfig {
@@ -15,6 +17,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> {
+            auth.requestMatchers(POST, "/api/user/createUser").permitAll();
             auth.anyRequest().authenticated();
         });
         http.httpBasic(Customizer.withDefaults());
